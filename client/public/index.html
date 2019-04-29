@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="js/bundle.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"/>
+    <title>Panda Animal Shelter</title>
+  </head>
+  <body>
+    <div class="ui container">
+      <h1 id="panda">Animal Shelter</h1>
+
+        <form class="ui form" id="new-animal-form">
+          <div class="seven fields">
+
+            <div class="field">
+              <label for="name">Name:</label>
+              <input type="text" id="name" placeholder="Name"/>
+            </div>
+
+            <div class="field">
+              <label for="image-url">Image:</label>
+              <input type="text" id="image-url" placeholder="Image"/>
+            </div>
+
+            <div class="field">
+              <label for="type">Type:</label>
+              <input type="text" id="type" placeholder="Type"/>
+            </div>
+
+            <div class="field">
+              <label for="breed">Breed:</label>
+              <input type="text" id="breed" placeholder="Breed"/>
+            </div>
+
+            <div class="field">
+              <label for="age">Age:</label>
+              <input type="text" id="age" placeholder="Age"/>
+            </div>
+
+            <div class="field">
+              <label for="gender">Gender:</label>
+              <input type="text" id="gender" placeholder="Gender"/>
+            </div>
+
+            <div class="field">
+              <label for="adoption">Status:</label>
+              <select id="select" class="ui dropdown" name="status">
+                <option selected disabled>Options</option>
+                <option value="true">Adopted</option>
+                <option value="false">Awaiting for adoption</option>
+              </select>
+            </div>
+
+          </div>
+            <input
+              class="ui violet button"
+              type="submit"
+              id="upload"
+              value="Upload to database"
+            />
+        </form>
+
+        <form class="ui form" id="update-animal-form">
+          <div class="seven fields">
+
+            <input type="hidden" id="id" name="ID">
+
+            <div class="field">
+              <label for="name">Name:</label>
+              <input type="text" id="name" placeholder="Name"/>
+            </div>
+
+            <div class="field">
+              <label for="image-url">Image:</label>
+              <input type="text" id="image-url" placeholder="Image"/>
+            </div>
+
+            <div class="field">
+              <label for="type">Type:</label>
+              <input type="text" id="type" placeholder="Type"/>
+            </div>
+
+            <div class="field">
+              <label for="breed">Breed:</label>
+              <input type="text" id="breed" placeholder="Breed"/>
+            </div>
+
+            <div class="field">
+              <label for="age">Age:</label>
+              <input type="text" id="age" placeholder="Age"/>
+            </div>
+
+            <div class="field">
+              <label for="gender">Gender:</label>
+              <input type="text" id="gender" placeholder="Gender"/>
+            </div>
+
+            <div class="field">
+              <label for="adoption">Status:</label>
+              <select id="select" class="ui dropdown" name="status">
+                <option selected disabled>Options</option>
+                <option value="true">Adopted</option>
+                <option value="false">Awaiting for adoption</option>
+              </select>
+            </div>
+
+          </div>
+          <input
+            class="ui violet button"
+            type="submit"
+            id="upload"
+            value="Update"
+          />
+        </form>
+
+        <h5 class="ui horizontal divider header">
+          <i class="circular paw icon"></i>
+        </h5>
+
+      <div id="search" class="searches">
+      <div class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search by name">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+
+      <div id="search" class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search by type">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+
+      <div id="search" class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search by breed">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+
+      <div id="search" class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search by age">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+      </div>
+
+      <div class="ui segment">
+        <div class="ui two column very relaxed grid">
+          <div id="column1" class="column">
+            <h5>Animals</h5>
+          </div>
+          <div id="column2" class="column">
+            <h5>Adopted Animals</h5>
+          </div>
+        </div>
+        <div id="postions" class="ui vertical divider">
+          <i class="paw icon"></i>
+        </div>
+      </div>
+
+      <div class="ui segment">
+        <div class="ui two column very relaxed grid">
+          <div id="animal-container" class="column"></div>
+          <div id="adopted-animal-container" class="column"></div>
+        </div>
+        <div class="ui vertical divider"></div>
+      </div>
+    </div>
+  </body>
+</html>
