@@ -2,6 +2,7 @@ const Animals = require("./models/animals.js");
 const AnimalsView = require("./views/animals_view.js");
 const AnimalsFormView = require("./views/animals_form_view.js");
 const UpdateAnimalsFormView = require("./views/update_animals_form_view.js");
+const AnimalsSearchView = require("./views/animals_search_view.js");
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -14,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateAnimalView = new UpdateAnimalsFormView();
   updateAnimalView.bindEvent();
 
+  const animalSearch = new AnimalsSearchView();
+  animalSearch.bindEvent();
+
   const animals = new Animals();
+  // animals.getAnimalData();
+  animals.bindEvent();
   animals.getData();
 });

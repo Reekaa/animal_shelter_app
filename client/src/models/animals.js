@@ -6,6 +6,26 @@ class Animals {
     this.data = null;
   }
 
+  bindEvent() {
+    PubSub.subscribe('AnimalsSearchView:search-by-name-submitted', (evt) => {
+      const name = evt.detail;
+      this.getAnimalData(name);
+    })
+  }
+
+  getAnimalData(name) {
+    const url = `http://localhost:3000/animals/search?name=${name}`;
+    const request = new RequestHelper(url);
+    request.get()
+      .then(data => {
+        this.data = data;
+        PubSub.publish("Animals:animal-name-data-loaded", this.data);
+      })
+      .catch(message => {
+        console.error(message);
+      });
+  }
+
   getData() {
     const url = "http://localhost:3000/animals";
     const request = new RequestHelper(url);

@@ -34,8 +34,8 @@ class AnimalsView {
 
     const meta = document.createElement("div");
     meta.classList.add("meta");
-    meta.innerHTML = `<span>type: ${animal.type} <br> breed: ${animal.breed} <br> age: ${animal.age} <br>
-    gender: ${animal.gender}</span>`;
+    meta.innerHTML = `<span><b>type:</b> ${animal.type} <br> <b>breed:</b> ${animal.breed} <br> <b>age:</b> ${animal.age} <br>
+    <b>gender:</b> ${animal.gender}</span>`;
 
     const header = document.createElement("a");
     header.innerHTML = `${animal.name}`;

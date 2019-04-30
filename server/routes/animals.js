@@ -8,6 +8,14 @@ router.get("/", function(req, res) {
   });
 });
 
+router.get("/search", function(req, res) {
+  console.log(req.query.name);
+  SqlRunner.run("SELECT * FROM animals WHERE name=$1",
+  [req.body.name, req.query]).then(result => {
+      res.status(200).json(result.rows);
+    });
+});
+
 router.post("/", function(req, res) {
   SqlRunner.run(
     "INSERT INTO animals (name, image_url, type, breed, age, gender, adopted) VALUES ($1, $2, $3, $4, $5, $6, $7)",
