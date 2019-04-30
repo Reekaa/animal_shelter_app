@@ -10,6 +10,7 @@ class AnimalSearchView {
     this.searchByNameInput.addEventListener('keyup', (evt) => {
       if(evt.keyCode === 13){
         const name = this.searchByNameInput.value;
+        console.log("name", name);
         PubSub.publish('AnimalsSearchView:search-by-name-submitted', name);
       }
     });

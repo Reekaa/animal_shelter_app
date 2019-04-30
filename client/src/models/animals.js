@@ -9,6 +9,7 @@ class Animals {
   bindEvent() {
     PubSub.subscribe('AnimalsSearchView:search-by-name-submitted', (evt) => {
       const name = evt.detail;
+      console.log(name);
       this.getAnimalData(name);
     })
   }
@@ -19,7 +20,7 @@ class Animals {
     request.get()
       .then(data => {
         this.data = data;
-        PubSub.publish("Animals:animal-name-data-loaded", this.data);
+        PubSub.publish("Animals:animal-data-loaded", this.data);
       })
       .catch(message => {
         console.error(message);

@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   animalSearch.bindEvent();
 
   const animals = new Animals();
-  // animals.getAnimalData();
   animals.bindEvent();
   animals.getData();
 });

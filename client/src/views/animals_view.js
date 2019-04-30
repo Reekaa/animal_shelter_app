@@ -12,7 +12,7 @@ class AnimalsView {
     PubSub.subscribe("Animals:animal-data-loaded", (evt) => {
       const animals = evt.detail;
       this.render(animals);
-    });
+    })
   }
 
   render(animals) {

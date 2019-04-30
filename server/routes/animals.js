@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
 router.get("/search", function(req, res) {
   console.log(req.query.name);
   SqlRunner.run("SELECT * FROM animals WHERE name=$1",
-  [req.body.name, req.query]).then(result => {
+  [req.query.name]).then(result => {
       res.status(200).json(result.rows);
     });
 });
