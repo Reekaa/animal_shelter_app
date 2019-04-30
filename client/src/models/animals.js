@@ -10,16 +10,35 @@ class Animals {
     PubSub.subscribe('AnimalsSearchView:search-by-name-submitted', (evt) => {
       const name = evt.detail;
       console.log(name);
-      this.getAnimalData(name);
+      this.getAnimalDataByName(name);
+    })
+    PubSub.subscribe('AnimalsSearchView:search-by-type-submitted', (evt) => {
+      const type = evt.detail;
+      console.log(type);
+      this.getAnimalDataByType(type);
     })
   }
 
-  getAnimalData(name) {
+  getAnimalDataByName(name) {
     const url = `http://localhost:3000/animals/search?name=${name}`;
     const request = new RequestHelper(url);
     request.get()
       .then(data => {
         this.data = data;
+        PubSub.publish("Animals:animal-data-loaded", this.data);
+      })
+      .catch(message => {
+        console.error(message);
+      });
+  }
+
+  getAnimalDataByType(type) {
+    const url = `http://localhost:3000/animals/search?type=${type}`;
+    const request = new RequestHelper(url);
+    request.get()
+      .then(data => {
+        this.data = data;
+        console.log(this.data);
         PubSub.publish("Animals:animal-data-loaded", this.data);
       })
       .catch(message => {

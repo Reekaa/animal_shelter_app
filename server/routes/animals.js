@@ -9,9 +9,12 @@ router.get("/", function(req, res) {
 });
 
 router.get("/search", function(req, res) {
-  console.log(req.query.name);
-  SqlRunner.run("SELECT * FROM animals WHERE name=$1",
-  [req.query.name]).then(result => {
+  const keys = Object.keys(req.query);
+  const searchKey = keys[0];
+  console.log(searchKey);
+  console.log(req.query[searchKey]);
+  SqlRunner.run(`SELECT * FROM animals WHERE ${searchKey}=$1`,
+  [req.query[searchKey]]).then(result => {
       res.status(200).json(result.rows);
     });
 });
