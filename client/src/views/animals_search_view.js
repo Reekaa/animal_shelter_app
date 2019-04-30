@@ -39,7 +39,7 @@ class AnimalSearchView {
 
     this.searchByBreedInput.addEventListener('keyup', (evt) => {
       if(evt.keyCode === 13){
-        const type = this.searchByBreedInput.value;
+        const breed = this.searchByBreedInput.value;
 
         const searchData = {
           searchField: 'breed',
@@ -52,7 +52,7 @@ class AnimalSearchView {
 
     this.searchByAgeInput.addEventListener('keyup', (evt) => {
       if(evt.keyCode === 13){
-        const type = this.searchByAgeInput.value;
+        const age = this.searchByAgeInput.value;
 
         const searchData = {
           searchField: 'age',
