@@ -56,3 +56,6 @@ header{
 div#animal-container.column{
   padding-left: 8rem;
 }
+.adoption-form{
+  visibility: hidden;
+}

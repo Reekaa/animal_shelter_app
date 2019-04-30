@@ -54,14 +54,18 @@ class AnimalsView {
     const adoptionClick = document.createElement("button");
     adoptionClick.classList.add("button");
     adoptionClick.id = animal.id;
-    adoptionClick.onclick = function(event){
-      PubSub.publish('Animals:animal-adoption-click', animal.id);
-    }
     let displayText = "Awaiting for adoption"
     if (animal.adopted) {
       displayText = "Adopted"
     }
     adoptionClick.innerHTML = `${displayText}`
+
+    adoptionClick.addEventListener('click', (evt) =>{
+      console.log(event.target.id);
+      const adoptionForm = document.querySelector('adoption-form');
+      adoptionForm.classList.add('hide');
+      adoptionForm.classList.add('show');
+    })
 
     const deleteButton = document.createElement("button");
     deleteButton.id = animal.id;

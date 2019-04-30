@@ -15,7 +15,7 @@ CREATE TABLE animals  (
 CREATE TABLE owners (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  owners.adoptionID INT REFERENCE animals.id
+  adoption_id INT REFERENCES animals(id)
 );
 
 INSERT INTO animals (name, image_url, type, breed, age, gender, adopted)  values('Chilli', 'vizsla1.jpg', 'dog', 'vizsla', 2, 'male', false);
@@ -39,8 +39,8 @@ INSERT INTO animals (name, image_url, type, breed, age, gender, adopted)  values
 INSERT INTO animals (name, image_url, type, breed, age, gender, adopted)  values('Fluffy', 'fuzzyLop2.jpg', 'rabbit', 'fuzzy lop', 3, 'male', false);
 
 
-INSERT INTO owners (name, adoptionID)  values ('Reka', 135);
-INSERT INTO owners (name, adoptionID)  values ('Jenn', 246);
-INSERT INTO owners (name, adoptionID)  values ('Joe', 357);
-INSERT INTO owners (name, adoptionID)  values ('Karen', 468);
-INSERT INTO owners (name, adoptionID)  values ('Vera', 579);
+INSERT INTO owners (name, adoption_id)  values ('Reka', 1);
+INSERT INTO owners (name, adoption_id)  values ('Jenn', 2);
+INSERT INTO owners (name, adoption_id)  values ('Joe', 4);
+INSERT INTO owners (name, adoption_id)  values ('Karen', 6);
+INSERT INTO owners (name, adoption_id)  values ('Vera', 10);
