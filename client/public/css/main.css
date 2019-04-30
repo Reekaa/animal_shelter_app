@@ -31,7 +31,7 @@ img{
 button{
   color: white;
   background-color: #311B92;
-  float: right;
+  float: left;
 }
 .a{
   color: #311B92;
@@ -56,6 +56,14 @@ header{
 div#animal-container.column{
   padding-left: 8rem;
 }
-.adoption-form{
+
+.hide {
   visibility: hidden;
+}
+.show{
+  position: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
 }

@@ -62,9 +62,9 @@ class AnimalsView {
 
     adoptionClick.addEventListener('click', (evt) =>{
       console.log(event.target.id);
-      const adoptionForm = document.querySelector('adoption-form');
-      adoptionForm.classList.add('hide');
-      adoptionForm.classList.add('show');
+      const adoptionForm = document.querySelector(".adoption-form");
+      adoptionForm.classList.remove("hide");
+      adoptionForm.classList.add("show");
     })
 
     const deleteButton = document.createElement("button");
