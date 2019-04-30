@@ -52,19 +52,4 @@ router.delete('/:id', function(req, res) {
   });
 });
 
-
-
-// router.delete("/title/:title", function(req, res) {
-//   console.log(req.params.title);
-//   SqlRunner.run("DELETE FROM animals WHERE title = $1", [req.params.title]).then(
-//     result => {
-//       SqlRunner.run("SELECT * FROM animals ORDER BY title ASC").then(result => {
-//         res.status(201).json(result.rows);
-//       });
-//     }
-//   );
-// });
-//
-
-
 module.exports = router;

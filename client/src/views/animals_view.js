@@ -92,6 +92,7 @@ class AnimalsView {
     content.appendChild(deleteButton);
     card.appendChild(content);
 
+
     return card;
   }
 }

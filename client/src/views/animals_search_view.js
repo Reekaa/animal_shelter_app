@@ -5,6 +5,8 @@ class AnimalSearchView {
   constructor() {
     this.searchByNameInput = document.querySelector('#search-by-name');
     this.searchByTypeInput = document.querySelector('#search-by-type');
+    this.searchByBreedInput = document.querySelector('#search-by-breed');
+    this.searchByAgeInput = document.querySelector('#search-by-age');
 
   }
 
@@ -12,19 +14,54 @@ class AnimalSearchView {
     this.searchByNameInput.addEventListener('keyup', (evt) => {
       if(evt.keyCode === 13){
         const name = this.searchByNameInput.value;
-        PubSub.publish('AnimalsSearchView:search-by-name-submitted', name);
+
+        const searchData = {
+          searchField: 'name',
+          searchValue: name
+        }
+
+        PubSub.publish('AnimalsSearchView:search-data-submitted', searchData);
       }
     });
+
     this.searchByTypeInput.addEventListener('keyup', (evt) => {
       if(evt.keyCode === 13){
         const type = this.searchByTypeInput.value;
-        PubSub.publish('AnimalsSearchView:search-by-type-submitted', type);
+
+        const searchData = {
+          searchField: 'type',
+          searchValue: type
+        }
+
+        PubSub.publish('AnimalsSearchView:search-data-submitted', searchData);
       }
     });
-  }
 
-  getSearchData(data){
+    this.searchByBreedInput.addEventListener('keyup', (evt) => {
+      if(evt.keyCode === 13){
+        const type = this.searchByBreedInput.value;
 
+        const searchData = {
+          searchField: 'breed',
+          searchValue: breed
+        }
+
+        PubSub.publish('AnimalsSearchView:search-data-submitted', searchData);
+      }
+    });
+
+    this.searchByAgeInput.addEventListener('keyup', (evt) => {
+      if(evt.keyCode === 13){
+        const type = this.searchByAgeInput.value;
+
+        const searchData = {
+          searchField: 'age',
+          searchValue: age
+        }
+
+        PubSub.publish('AnimalsSearchView:search-data-submitted', searchData);
+      }
+    });
   }
 
 }
