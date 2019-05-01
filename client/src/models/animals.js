@@ -52,6 +52,7 @@ class Animals {
     request.post(animal)
       .then((animals) => {
         PubSub.publish('Animals:animal-data-loaded', animals);
+        this.getData();
       })
       .catch(console.error);
   }
@@ -63,13 +64,13 @@ class Animals {
       .put(animal)
       .then(animals => {
         PubSub.publish("Animals:animals-data-loaded", animals);
+        this.getData();
       })
       .catch(console.error);
   }
 
   deleteAnimal(id) {
     const url = `http://localhost:3000/animals/${id}`;
-    console.log(url);
     const request = new RequestHelper(url);
     request
       .delete()
@@ -86,6 +87,7 @@ class Animals {
       .put()
       .then(animals => {
         PubSub.publish("Animals:animals-data-loaded", animals);
+        this.getData();
       })
       .catch(console.error);
   }
