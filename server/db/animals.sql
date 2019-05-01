@@ -39,11 +39,11 @@ INSERT INTO animals (name, image_url, type, breed, age, gender, adopted)  values
 INSERT INTO animals (name, image_url, type, breed, age, gender, adopted)  values('Fluffy', 'fuzzyLop2.jpg', 'rabbit', 'fuzzy lop', 3, 'male', false);
 
 
-INSERT INTO owners (name, adoption_id)  values ('Reka', 1);
-INSERT INTO owners (name, adoption_id)  values ('Jenn', 2);
-INSERT INTO owners (name, adoption_id)  values ('Joe', 4);
-INSERT INTO owners (name, adoption_id)  values ('Karen', 6);
-INSERT INTO owners (name, adoption_id)  values ('Vera', 10);
+INSERT INTO owners (name)  values ('Reka');
+INSERT INTO owners (name)  values ('Jenn');
+INSERT INTO owners (name)  values ('Joe');
+INSERT INTO owners (name)  values ('Karen');
+INSERT INTO owners (name)  values ('Vera');
 INSERT INTO owners (name)  values ('Bob');
 INSERT INTO owners (name)  values ('Sian');
 INSERT INTO owners (name)  values ('Rose');

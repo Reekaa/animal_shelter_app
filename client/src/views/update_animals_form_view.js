@@ -18,7 +18,6 @@ class UpdateAnimalsFormView{
       animal.gender = evt.target['gender'].value;
       animal.adopted = evt.target['select'].value;
       const id = evt.target['id'].value;
-      console.log(id);
 
       const animals = new Animals();
       animals.updateAnimal(id, animal);

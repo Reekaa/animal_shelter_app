@@ -2,14 +2,14 @@ const PubSub = require("../helpers/pub_sub.js");
 const Animals = require("../models/animals.js");
 
 
-class AnimalsView {
+class AdoptedAnimalsView {
 
   constructor() {
-    this.container = document.querySelector("#animal-container");
+    this.container = document.querySelector("#adopted-animal-container");
   }
 
   bindEvent() {
-    PubSub.subscribe("Animals:animal-data-loaded", (evt) => {
+    PubSub.subscribe("Animals:animals-data-loaded", (evt) => {
       const animals = evt.detail;
       this.render(animals);
     })
@@ -18,16 +18,14 @@ class AnimalsView {
   render(animals) {
     this.clearAnimals();
 
-    animals.forEach((animal) => {
-      const animalCard = this.createCard(animal);
+    const adoptedAnimals = animals.filter(animal => animal.adopted === true);
+    adoptedAnimals.forEach((adoptedAnimal) => {
+      const animalCard = this.createCard(adoptedAnimal);
       this.container.appendChild(animalCard);
-    });
+    })
+
+
   }
-    // const adoptedAnimals = animals.filter(animal => animal.adopted === false)
-    // adoptedAnimals.forEach((adoptedAnimal) => {
-    //   const animalCard = this.createCard(adoptedAnimal);
-    //   this.container.appendChild(animalCard);
-    // })
 
   clearAnimals() {
     this.container.innerHTML = "";
@@ -96,18 +94,15 @@ class AnimalsView {
     const adoptionClick = document.createElement("button");
       adoptionClick.classList.add("button");
         adoptionClick.id = animal.id;
-          let displayText = animal.adopted;
-            if (animal.adopted === true) {
+          let displayText = "Awaiting for adoption"
+            if (animal.adopted) {
               displayText = "Adopted"
-            }else{
-              displayText = "Awaiting for adoption"
             }
           adoptionClick.innerHTML = `${displayText}`
 
       adoptionClick.addEventListener('click', (evt) =>{
         const animalId = event.target.id;
         PubSub.publish('AdoptionFormView: adoption-form-submitted', animalId);
-        
 
       })
 
@@ -151,4 +146,4 @@ class AnimalsView {
 
 }
 
-module.exports = AnimalsView;
+// module.exports = AdoptedAnimalsView;

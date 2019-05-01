@@ -15,7 +15,6 @@ class Animals {
 
     PubSub.subscribe('AdoptionFormView: adoption-form-submitted', (evt) => {
       const adoption = evt.detail
-      console.log(adoption);
       this.updateAdoption(adoption);
     })
 
@@ -82,15 +81,11 @@ class Animals {
 
   updateAdoption(id) {
     const url = `http://localhost:3000/animals/adopt/${id}`;
-    console.log(url);
     const request = new RequestHelper(url);
     request
       .put()
       .then(animals => {
-
-        
-        PubSub.publish("Animals:animals-data-loaded-adopted", animals);
-        PubSub.publish("Animals:animals-data-loaded-notadopted", animals);
+        PubSub.publish("Animals:animals-data-loaded", animals);
       })
       .catch(console.error);
   }
