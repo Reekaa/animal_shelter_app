@@ -64,6 +64,7 @@ class Animals {
 
   deleteAnimal(id) {
     const url = `http://localhost:3000/animals/${id}`;
+    console.log(url);
     const request = new RequestHelper(url);
     request
       .delete()

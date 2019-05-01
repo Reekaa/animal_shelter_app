@@ -11,8 +11,6 @@ router.get("/", function(req, res) {
 router.get("/search", function(req, res) {
   const keys = Object.keys(req.query);
   const searchKey = keys[0];
-  console.log(searchKey);
-  console.log(req.query[searchKey]);
   SqlRunner.run(`SELECT * FROM animals WHERE ${searchKey}=$1`,
   [req.query[searchKey]]).then(result => {
       res.status(200).json(result.rows);
@@ -42,6 +40,7 @@ router.put("/:id", function(req, res) {
 });
 
 router.delete('/:id', function(req, res) {
+  console.log(req.params.id);
   SqlRunner.run(
     "DELETE FROM animals WHERE id = $1",
      [req.params.id]
