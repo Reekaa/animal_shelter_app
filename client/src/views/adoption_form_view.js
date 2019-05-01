@@ -11,16 +11,18 @@ class AdoptionFormView {
     this.element.addEventListener('submit', (evt) => {
       evt.preventDefault();
       const adoption = {}
-      adoption.owner = evt.target['owner-select'].value;
+      adoption.adopted = evt.target['select'].value;
       adoption.animals = evt.target['animals'].value;
       adoption.id = evt.target['id'].value;
       console.log(adoption);
 
+    PubSub.publish('AdoptionFormView: adoption-form-submitted', adoption)
 
-      // PubSub.publish('AdoptionFormView: submited-form')
 
 
-    })
+
+
+    });
   }
 
 }

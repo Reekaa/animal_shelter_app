@@ -3,7 +3,6 @@ const AnimalsView = require("./views/animals_view.js");
 const AnimalsFormView = require("./views/animals_form_view.js");
 const UpdateAnimalsFormView = require("./views/update_animals_form_view.js");
 const AnimalsSearchView = require("./views/animals_search_view.js");
-const AdoptionFormView = require("./views/adoption_form_view.js");
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -18,9 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const animalSearch = new AnimalsSearchView();
   animalSearch.bindEvent();
-
-  const adoptionForm = new AdoptionFormView();
-  adoptionForm.bindEvent();
 
   const animals = new Animals();
   animals.bindEvent();

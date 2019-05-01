@@ -66,7 +66,7 @@ class AnimalsView {
         document.getElementById('update-animal-form').elements['breed'].value = animal.breed;
         document.getElementById('update-animal-form').elements['age'].value = animal.age;
         document.getElementById('update-animal-form').elements['gender'].value = animal.gender;
-        document.getElementById('update-animal-form').elements['select'].value = animal.adopted;
+        document.getElementById('update-animal-form').elements['select'].value = animal.select;
         }
 
       return header;
@@ -99,9 +99,9 @@ class AnimalsView {
           adoptionClick.innerHTML = `${displayText}`
 
       adoptionClick.addEventListener('click', (evt) =>{
-        const adoptionForm = document.querySelector(".adoption-form");
-        adoptionForm.classList.remove("hide");
-        adoptionForm.classList.add("show");
+        const animalId = event.target.id;
+        PubSub.publish('AdoptionFormView: adoption-form-submitted', animalId);
+
       })
 
       adoptionClick.onclick = function(){

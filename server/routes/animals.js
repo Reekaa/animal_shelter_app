@@ -28,7 +28,20 @@ router.post("/", function(req, res) {
   });
 });
 
+router.put("/adopt/:id", function(req, res) {
+  console.log('put is hit ');
+  SqlRunner.run(
+    "UPDATE animals SET adopted=$1 WHERE id=$2",
+    [true, req.params.id]
+  ).then(result => {
+    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
+      res.status(201).json(result.rows);
+    });
+  });
+});
+
 router.put("/:id", function(req, res) {
+  console.log('this wrong put is hit');
   SqlRunner.run(
     "UPDATE animals SET name=$1, image_url=$2, type=$3, breed=$4, age=$5, gender=$6, adopted=$7 WHERE id=$8",
     [req.body.name, req.body.image_url, req.body.type, req.body.breed, req.body.age, req.body.gender, req.body.adopted, req.params.id]
@@ -39,16 +52,7 @@ router.put("/:id", function(req, res) {
   });
 });
 
-router.put("/adopt/:id", function(req, res) {
-  SqlRunner.run(
-    "UPDATE animals SET adopted=$1 WHERE id=$2",
-    [true, req.params.id]
-  ).then(result => {
-    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
-      res.status(201).json(result.rows);
-    });
-  });
-});
+
 
 router.delete('/:id', function(req, res) {
   console.log(req.params.id);

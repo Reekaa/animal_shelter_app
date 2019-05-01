@@ -12,6 +12,13 @@ class Animals {
       const searchValue = evt.detail.searchValue;
       this.getAnimalDataBySearch(searchField, searchValue);
     })
+
+    PubSub.subscribe('AdoptionFormView: adoption-form-submitted', (evt) => {
+      const adoption = evt.detail
+      console.log(adoption);
+      this.updateAdoption(adoption);
+    })
+
   }
 
   getAnimalDataBySearch(searchField, searchValue) {
@@ -51,7 +58,6 @@ class Animals {
   }
 
   updateAnimal(id, animal) {
-    console.log(id);
     const url = `http://localhost:3000/animals/${id}`;
     const request = new RequestHelper(url);
     request
@@ -73,6 +79,22 @@ class Animals {
       })
       .catch(console.error);
   }
+
+  updateAdoption(id) {
+    const url = `http://localhost:3000/animals/adopt/${id}`;
+    console.log(url);
+    const request = new RequestHelper(url);
+    request
+      .put()
+      .then(animals => {
+
+        
+        PubSub.publish("Animals:animals-data-loaded-adopted", animals);
+        PubSub.publish("Animals:animals-data-loaded-notadopted", animals);
+      })
+      .catch(console.error);
+  }
+
 }
 
 module.exports = Animals;
