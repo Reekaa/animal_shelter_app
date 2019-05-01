@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"/>
     <title>Panda Animal Shelter</title>
   </head>
-  <body>
+  <body class="body">
     <div class="ui container">
       <h1 id="panda">Animal Shelter</h1>
 
@@ -165,12 +165,18 @@
           </div>
         </div>
         <form class="ui form adoption-form hide">
-            <div class="two fields">
+            <div class="four fields">
               <div class="field">
-                <input type="text" name="owner" value="New Owner">
+                <input type="text" name="owner" placeholder="New Owner">
               </div>
               <div class="field">
-                <input type="text" name="animals" value="Animal">
+                <input type="text" name="animals" placeholder="Animal">
+              </div>
+              <div class="field">
+                <input id="submit" type="submit" value="Submit">
+              </div>
+              <div class="field">
+                <input type="hidden" name="id" placeholder="ID">
               </div>
             </div>
         </form>

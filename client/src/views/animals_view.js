@@ -34,8 +34,8 @@ class AnimalsView {
 
     const meta = document.createElement("div");
     meta.classList.add("meta");
-    meta.innerHTML = `<span><b>type:</b> ${animal.type} <br> <b>breed:</b> ${animal.breed} <br> <b>age:</b> ${animal.age} <br>
-    <b>gender:</b> ${animal.gender}</span>`;
+    meta.innerHTML = `<span><b>Type:</b> ${animal.type} <br> <b>Breed:</b> ${animal.breed} <br> <b>Age:</b> ${animal.age} <br>
+    <b>Gender:</b> ${animal.gender}</span>`;
 
     const header = document.createElement("a");
     header.innerHTML = `${animal.name}`;
@@ -61,16 +61,21 @@ class AnimalsView {
     adoptionClick.innerHTML = `${displayText}`
 
     adoptionClick.addEventListener('click', (evt) =>{
-      console.log(event.target.id);
       const adoptionForm = document.querySelector(".adoption-form");
       adoptionForm.classList.remove("hide");
       adoptionForm.classList.add("show");
     })
 
+    adoptionClick.onclick = function(){
+      document.querySelector(".adoption-form").elements["animals"].value = animal.name;
+      document.querySelector(".adoption-form").elements["id"].value = animal.id;
+    }
+
     const deleteButton = document.createElement("button");
     deleteButton.id = animal.id;
     deleteButton.classList.add("button");
     deleteButton.innerHTML = 'Delete';
+    deleteButton.className += "ui button delete-button";
 
     deleteButton.addEventListener('click', (evt) => {
       evt.preventDefault();
