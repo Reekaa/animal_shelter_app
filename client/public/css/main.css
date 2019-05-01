@@ -88,3 +88,6 @@ input[type=submit] {
   display: flex;
   justify-content: space-between;
 }
+div.field{
+  padding:7px 10px;
+}

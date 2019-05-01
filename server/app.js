@@ -7,6 +7,7 @@ var cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var animalsRouter = require("./routes/animals");
+var ownersRouter = require("./routes/owners");
 
 var app = express();
 
@@ -20,5 +21,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/animals", animalsRouter); // change this to the database name and call this in Insomnia
+app.use("/owners", ownersRouter); // change this to the database name and call this in Insomnia
 
 module.exports = app;

@@ -39,6 +39,17 @@ router.put("/:id", function(req, res) {
   });
 });
 
+router.put("/adopt/:id", function(req, res) {
+  SqlRunner.run(
+    "UPDATE animals SET adopted=$1 WHERE id=$2",
+    [true, req.params.id]
+  ).then(result => {
+    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
+      res.status(201).json(result.rows);
+    });
+  });
+});
+
 router.delete('/:id', function(req, res) {
   console.log(req.params.id);
   SqlRunner.run(

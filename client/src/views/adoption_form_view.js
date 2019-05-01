@@ -10,8 +10,16 @@ class AdoptionFormView {
   bindEvent(){
     this.element.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      const adoptionId = evt.target['id'].value;
-      PubSub.publish('AdoptionFormView: submited-form')
+      const adoption = {}
+      adoption.owner = evt.target['owner-select'].value;
+      adoption.animals = evt.target['animals'].value;
+      adoption.id = evt.target['id'].value;
+      console.log(adoption);
+
+
+      // PubSub.publish('AdoptionFormView: submited-form')
+
+
     })
   }
 
