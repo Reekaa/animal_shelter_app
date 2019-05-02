@@ -28,7 +28,6 @@ class AnimalsView {
 
   }
 
-
   clearAnimals() {
     this.container.innerHTML = "";
   }
@@ -107,8 +106,6 @@ class AnimalsView {
       adoptionClick.addEventListener('click', (evt) =>{
         const animalId = event.target.id;
         PubSub.publish('AdoptionFormView: adoption-form-submitted', animalId);
-
-
       })
 
     return adoptionClick;
@@ -126,11 +123,9 @@ class AnimalsView {
       const animalId = evt.target.id;
       const animals = new Animals();
       animals.deleteAnimal(animalId);
-
     });
 
     return deleteButton;
-
   }
 
   createContent(animal){
@@ -149,5 +144,4 @@ class AnimalsView {
   }
 
 }
-
 module.exports = AnimalsView;

@@ -26,12 +26,6 @@ class AdoptedAnimalsView {
       this.container.appendChild(animalCard);
     })
   }
-  //   const adoptedAnimals = animals.filter(animal => animal.adopted === true);
-  //   adoptedAnimals.forEach((adoptedAnimal) => {
-  //     const animalCard = this.createCard(adoptedAnimal);
-  //     this.container.appendChild(animalCard);
-  //   })
-  // }
 
   clearAnimals() {
     this.container.innerHTML = "";
@@ -106,7 +100,6 @@ class AdoptedAnimalsView {
       adoptionClick.addEventListener('click', (evt) =>{
         const animalId = event.target.id;
         PubSub.publish('AdoptionFormView: adoption-form-submitted', animalId);
-
       })
 
     return adoptionClick;
@@ -125,11 +118,9 @@ class AdoptedAnimalsView {
       const animalId = evt.target.id;
       const animals = new Animals();
       animals.deleteAnimal(animalId);
-
     });
 
     return deleteButton;
-
   }
 
   createContent(animal){
@@ -148,5 +139,4 @@ class AdoptedAnimalsView {
   }
 
 }
-
 module.exports = AdoptedAnimalsView;

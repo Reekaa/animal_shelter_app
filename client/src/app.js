@@ -7,8 +7,6 @@ const AdoptedAnimalsView = require("./views/adopted_animals_view.js");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
-
   const animalView = new AnimalsView();
   animalView.bindEvent();
 
@@ -23,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const adoptedAnimals = new AdoptedAnimalsView();
   adoptedAnimals.bindEvent();
-  
+
   const animals = new Animals();
   animals.bindEvent();
   animals.getData();
