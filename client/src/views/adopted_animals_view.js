@@ -9,7 +9,7 @@ class AdoptedAnimalsView {
   }
 
   bindEvent() {
-    PubSub.subscribe("Animals:animals-data-loaded", (evt) => {
+    PubSub.subscribe("Animals:animal-data-loaded", (evt) => {
       const animals = evt.detail;
       this.render(animals);
     })
@@ -18,14 +18,15 @@ class AdoptedAnimalsView {
   render(animals) {
     this.clearAnimals();
 
-    const adoptedAnimals = animals.filter(animal => animal.adopted === true);
-    adoptedAnimals.forEach((adoptedAnimal) => {
-      const animalCard = this.createCard(adoptedAnimal);
-      this.container.appendChild(animalCard);
-    })
-
-
+    animalsModel = new Animals();
+    animalsModel.filterAnimalData(true);
   }
+  //   const adoptedAnimals = animals.filter(animal => animal.adopted === true);
+  //   adoptedAnimals.forEach((adoptedAnimal) => {
+  //     const animalCard = this.createCard(adoptedAnimal);
+  //     this.container.appendChild(animalCard);
+  //   })
+  // }
 
   clearAnimals() {
     this.container.innerHTML = "";
@@ -94,11 +95,8 @@ class AdoptedAnimalsView {
     const adoptionClick = document.createElement("button");
       adoptionClick.classList.add("button");
         adoptionClick.id = animal.id;
-          let displayText = "Awaiting for adoption"
-            if (animal.adopted) {
-              displayText = "Adopted"
-            }
-          adoptionClick.innerHTML = `${displayText}`
+          let displayText = "Adopted"
+            adoptionClick.innerHTML = `${displayText}`
 
       adoptionClick.addEventListener('click', (evt) =>{
         const animalId = event.target.id;
@@ -146,4 +144,4 @@ class AdoptedAnimalsView {
 
 }
 
-// module.exports = AdoptedAnimalsView;
+module.exports = AdoptedAnimalsView;

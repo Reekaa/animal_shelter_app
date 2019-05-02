@@ -18,16 +18,20 @@ class AnimalsView {
   render(animals) {
     this.clearAnimals();
 
-    animals.forEach((animal) => {
-      const animalCard = this.createCard(animal);
-      this.container.appendChild(animalCard);
-    });
+    animalsModel = new Animals();
+    animalsModel.filterAnimalData(false);
   }
     // const adoptedAnimals = animals.filter(animal => animal.adopted === false)
     // adoptedAnimals.forEach((adoptedAnimal) => {
     //   const animalCard = this.createCard(adoptedAnimal);
     //   this.container.appendChild(animalCard);
     // })
+
+    // animals.forEach((animal) => {
+    //   const animalCard = this.createCard(animal);
+    //   this.container.appendChild(animalCard);
+    // });
+
 
   clearAnimals() {
     this.container.innerHTML = "";
@@ -70,7 +74,7 @@ class AnimalsView {
         document.getElementById('update-animal-form').elements['breed'].value = animal.breed;
         document.getElementById('update-animal-form').elements['age'].value = animal.age;
         document.getElementById('update-animal-form').elements['gender'].value = animal.gender;
-        document.getElementById('update-animal-form').elements['select'].value = animal.select;
+        document.getElementById('update-animal-form').elements['select'].value = animal.adopted;
         }
 
       return header;
@@ -107,7 +111,7 @@ class AnimalsView {
       adoptionClick.addEventListener('click', (evt) =>{
         const animalId = event.target.id;
         PubSub.publish('AdoptionFormView: adoption-form-submitted', animalId);
-        
+
 
       })
 
@@ -118,8 +122,7 @@ class AnimalsView {
     const deleteButton = document.createElement("button");
       deleteButton.id = animal.id;
       deleteButton.classList.add("button");
-      deleteButton.innerHTML = 'Delete';
-      deleteButton.className += "ui button delete-button";
+      deleteButton.innerHTML = "Delete";
 
     deleteButton.addEventListener('click', (evt) => {
       evt.preventDefault();

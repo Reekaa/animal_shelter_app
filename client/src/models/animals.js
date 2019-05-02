@@ -6,6 +6,27 @@ class Animals {
     this.data = null;
   }
 
+  filterAnimalData(animals){
+  //   const filteredAnimals = animals.filter(animal => animal.adopted === true)
+  //   filteredAnimals.forEach((adoptedAnimal) => {
+  //     const animalCard = this.createCard(adoptedAnimal);
+  //     this.container.appendChild(animalCard);
+  //   })
+  // }
+
+    const filteredAnimals = animals.adopted
+      if(filteredAnimals === true){
+        filteredAnimals.forEach((adoptedAnimal) => {
+          const animalCard = this.createCard(adoptedAnimal);
+          this.container.appendChild(animalCard);
+      })
+        }else{
+          const animalCard = this.createCard(adoptedAnimal);
+          this.container.appendChild(animalCard);
+        }
+  }
+
+
   bindEvent() {
     PubSub.subscribe('AnimalsSearchView:search-data-submitted', (evt) => {
       const searchField = evt.detail.searchField;
@@ -76,6 +97,7 @@ class Animals {
       .delete()
       .then(animals => {
         PubSub.publish("Animals:animal-data-loaded", animals);
+        this.getData();
       })
       .catch(console.error);
   }
@@ -86,7 +108,7 @@ class Animals {
     request
       .put()
       .then(animals => {
-        PubSub.publish("Animals:animals-data-loaded", animals);
+        PubSub.publish("Animals:animal-data-loaded", animals);
         this.getData();
       })
       .catch(console.error);

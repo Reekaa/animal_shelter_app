@@ -3,7 +3,7 @@ var router = express.Router();
 const SqlRunner = require("../db/sql_runner");
 
 router.get("/", function(req, res) {
-  SqlRunner.run("SELECT * FROM animals").then(result => {
+  SqlRunner.run("SELECT * FROM animals ORDER BY id ASC").then(result => {
     res.status(200).json(result.rows);
   });
 });
@@ -22,7 +22,7 @@ router.post("/", function(req, res) {
     "INSERT INTO animals (name, image_url, type, breed, age, gender, adopted) VALUES ($1, $2, $3, $4, $5, $6, $7)",
     [req.body.name, req.body.image_url, req.body.type, req.body.breed, req.body.age, req.body.gender, req.body.adopted]
   ).then(result => {
-    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
+    SqlRunner.run("SELECT * FROM animals ORDER BY id ASC").then(result => {
       res.status(201).json(result.rows);
     });
   });
@@ -34,19 +34,18 @@ router.put("/adopt/:id", function(req, res) {
     "UPDATE animals SET adopted=$1 WHERE id=$2",
     [true, req.params.id]
   ).then(result => {
-    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
+    SqlRunner.run("SELECT * FROM animals ORDER BY id ASC").then(result => {
       res.status(201).json(result.rows);
     });
   });
 });
 
 router.put("/:id", function(req, res) {
-  console.log('this wrong put is hit');
   SqlRunner.run(
     "UPDATE animals SET name=$1, image_url=$2, type=$3, breed=$4, age=$5, gender=$6, adopted=$7 WHERE id=$8",
     [req.body.name, req.body.image_url, req.body.type, req.body.breed, req.body.age, req.body.gender, req.body.adopted, req.params.id]
   ).then(result => {
-    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
+    SqlRunner.run("SELECT * FROM animals ORDER BY id ASC").then(result => {
       res.status(201).json(result.rows);
     });
   });
@@ -55,12 +54,11 @@ router.put("/:id", function(req, res) {
 
 
 router.delete('/:id', function(req, res) {
-  console.log(req.params.id);
   SqlRunner.run(
     "DELETE FROM animals WHERE id = $1",
      [req.params.id]
    ).then(result => {
-    SqlRunner.run("SELECT * FROM animals ORDER BY name ASC").then(result => {
+    SqlRunner.run("SELECT * FROM animals ORDER BY id ASC").then(result => {
       res.status(201).json(result.rows);
     });
   });
