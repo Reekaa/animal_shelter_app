@@ -6,26 +6,11 @@ class Animals {
     this.data = null;
   }
 
-  filterAnimalData(animals){
-  //   const filteredAnimals = animals.filter(animal => animal.adopted === true)
-  //   filteredAnimals.forEach((adoptedAnimal) => {
-  //     const animalCard = this.createCard(adoptedAnimal);
-  //     this.container.appendChild(animalCard);
-  //   })
-  // }
+  filterAnimalData(animals, adoptedStatus){
+    const filteredAnimals = animals.filter(animal => animal.adopted === adoptedStatus)
 
-    const filteredAnimals = animals.adopted
-      if(filteredAnimals === true){
-        filteredAnimals.forEach((adoptedAnimal) => {
-          const animalCard = this.createCard(adoptedAnimal);
-          this.container.appendChild(animalCard);
-      })
-        }else{
-          const animalCard = this.createCard(adoptedAnimal);
-          this.container.appendChild(animalCard);
-        }
+    return filteredAnimals;
   }
-
 
   bindEvent() {
     PubSub.subscribe('AnimalsSearchView:search-data-submitted', (evt) => {

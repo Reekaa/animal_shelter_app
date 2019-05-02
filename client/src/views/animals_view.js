@@ -18,19 +18,15 @@ class AnimalsView {
   render(animals) {
     this.clearAnimals();
 
-    animalsModel = new Animals();
-    animalsModel.filterAnimalData(false);
-  }
-    // const adoptedAnimals = animals.filter(animal => animal.adopted === false)
-    // adoptedAnimals.forEach((adoptedAnimal) => {
-    //   const animalCard = this.createCard(adoptedAnimal);
-    //   this.container.appendChild(animalCard);
-    // })
+    const animalsModel = new Animals();
+    const notAdoptedAnimals = animalsModel.filterAnimalData(animals, false);
 
-    // animals.forEach((animal) => {
-    //   const animalCard = this.createCard(animal);
-    //   this.container.appendChild(animalCard);
-    // });
+    notAdoptedAnimals.forEach((notadoptedAnimal) => {
+      const animalCard = this.createCard(notadoptedAnimal);
+      this.container.appendChild(animalCard);
+    })
+
+  }
 
 
   clearAnimals() {

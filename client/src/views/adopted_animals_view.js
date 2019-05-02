@@ -18,8 +18,13 @@ class AdoptedAnimalsView {
   render(animals) {
     this.clearAnimals();
 
-    animalsModel = new Animals();
-    animalsModel.filterAnimalData(true);
+    const animalsModel = new Animals();
+    const adoptedAnimals = animalsModel.filterAnimalData(animals, true);
+
+    adoptedAnimals.forEach((adoptedAnimal) => {
+      const animalCard = this.createCard(adoptedAnimal);
+      this.container.appendChild(animalCard);
+    })
   }
   //   const adoptedAnimals = animals.filter(animal => animal.adopted === true);
   //   adoptedAnimals.forEach((adoptedAnimal) => {
