@@ -68,7 +68,7 @@ class AdoptedAnimalsView {
         document.getElementById('update-animal-form').elements['breed'].value = animal.breed;
         document.getElementById('update-animal-form').elements['age'].value = animal.age;
         document.getElementById('update-animal-form').elements['gender'].value = animal.gender;
-        document.getElementById('update-animal-form').elements['select'].value = animal.select;
+        document.getElementById('update-animal-form').elements['select'].value = animal.adopted;
         }
 
       return header;

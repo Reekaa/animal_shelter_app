@@ -29,7 +29,6 @@ router.post("/", function(req, res) {
 });
 
 router.put("/adopt/:id", function(req, res) {
-  console.log('put is hit ');
   SqlRunner.run(
     "UPDATE animals SET adopted=$1 WHERE id=$2",
     [true, req.params.id]
@@ -50,8 +49,6 @@ router.put("/:id", function(req, res) {
     });
   });
 });
-
-
 
 router.delete('/:id', function(req, res) {
   SqlRunner.run(

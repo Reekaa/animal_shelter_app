@@ -12,13 +12,13 @@ class Animals {
     return filteredAnimals;
   }
 
+
   bindEvent() {
     PubSub.subscribe('AnimalsSearchView:search-data-submitted', (evt) => {
       const searchField = evt.detail.searchField;
       const searchValue = evt.detail.searchValue;
       this.getAnimalDataBySearch(searchField, searchValue);
     })
-
     PubSub.subscribe('AdoptionFormView: adoption-form-submitted', (evt) => {
       const adoption = evt.detail
       this.updateAdoption(adoption);

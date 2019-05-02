@@ -1,12 +1,15 @@
 .body{
   color: white;
-  background: #F5F7F6;
+  background: #F3F2F3;
+}
+.ui.container{
+  width: 1100px !important;
 }
 h1{
   text-align: center;
-  background-color: #2B263C;
-  color: white;
-  text-shadow: 3px 2px black;
+  color: #442470;
+  font-weight: bold;
+  font-size: 50px !important;
 }
 h5{
   color: #2B263C;
@@ -20,10 +23,24 @@ img{
   height: auto;
   border-radius: inherit;
 }
+.container {
+  position: relative;
+  font-family: Arial;
+}
+
+.text-block {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
 button{
   color: white;
-  background-color: #CBBF40;
+  background-color: #442470;
   float: left;
+
+}
+button:hover{
+  background-color: #7E7BBC;
 }
 #panda{
   font-size: 45px;
@@ -56,6 +73,9 @@ header{
 div#animal-container.column{
   padding-left: 8rem;
 }
+div#adopted-animal-container.column{
+  padding-left: 8rem;
+}
 .ui.card>.content a:not(.ui){
   font-size: 23px;
   color: #311B92;
@@ -63,7 +83,7 @@ div#animal-container.column{
 }
 .button{
   padding:7px 10px;
-  background:#2B263C;
+  background:#442470;
   color: white;
   border:0 none;
   cursor:pointer;
@@ -75,6 +95,9 @@ div#animal-container.column{
 span{
   font-style: oblique;
 }
-.ui.cards>.content{
-  color: black !important;
+.ui.inverted.menu{
+  background-color: #442470 !important;
+}
+.ui.secondary.button{
+  background-color: #99508A !important;
 }
