@@ -1,6 +1,6 @@
 .body{
   color: white;
-  background: #F3F2F3;
+  background: #F3F7F8;
 }
 .ui.container{
   width: 1100px !important;
@@ -30,8 +30,8 @@ img{
 
 .text-block {
   position: absolute;
-  top: 8px;
-  right: 16px;
+  top: 0px;
+  right: 360px;
 }
 button{
   color: white;

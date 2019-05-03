@@ -39,8 +39,6 @@ class AdoptedAnimalsView {
 
     const animalData = this.createDataForAnimal(animal);
 
-    const adoptionButton = this.createAdoptionButton(animal);
-
     const deleteButton = this.createDeleteButton(animal);
 
     const content = this.createContent(animal);
@@ -50,7 +48,6 @@ class AdoptedAnimalsView {
     content.appendChild(header);
     content.appendChild(image);
     content.appendChild(animalData);
-    content.appendChild(adoptionButton);
     content.appendChild(deleteButton);
     card.appendChild(content);
 
@@ -88,21 +85,6 @@ class AdoptedAnimalsView {
       <b>Gender:</b> ${animal.gender}</span>`;
 
     return meta;
-  }
-
-  createAdoptionButton(animal){
-    const adoptionClick = document.createElement("button");
-      adoptionClick.classList.add("button");
-        adoptionClick.id = animal.id;
-          let displayText = "Adopted"
-            adoptionClick.innerHTML = `${displayText}`
-
-      adoptionClick.addEventListener('click', (evt) =>{
-        const animalId = event.target.id;
-        PubSub.publish('AdoptionFormView: adoption-form-submitted', animalId);
-      })
-
-    return adoptionClick;
   }
 
   createDeleteButton(animal){
